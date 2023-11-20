@@ -1,8 +1,3 @@
-import dayjs from 'dayjs';
+import { runView } from './view';
 
-
-type Str = string;
-
-const foo: Str = 'string';
-
-console.log(foo, dayjs());
+runView();
