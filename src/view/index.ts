@@ -1,24 +1,4 @@
-import { createDoc } from 'src/model/editor';
-import * as Y from 'yjs';
-import { bindEvent } from './key-event';
-import { getPage } from 'src/helper/doc';
-
-function handleDocSynced(editorElement: HTMLElement, doc: Y.Doc) {
-  const page = getPage(doc);
-  const text = page.get('text');
-
-  if (!text) {
-    page.set('text', new Y.Text())
-  }
-
-  const pageText = text?.toJSON();
-
-  if (pageText) {
-    editorElement.innerText = pageText;
-  }
-
-  console.log('pageText', pageText);
-}
+import Editor from 'src/editor/editor';
 
 
 function handleCreateClick() {
@@ -28,9 +8,7 @@ function handleCreateClick() {
   editorElement.contentEditable = 'true';
   container?.appendChild(editorElement);
   
-  const doc = createDoc(handleDocSynced.bind(null, editorElement));
-
-  bindEvent(editorElement, doc);
+  const editor = new Editor(editorElement);
 }
 
 export function runView() {

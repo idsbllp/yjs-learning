@@ -1,11 +1,11 @@
 import { BlockType } from 'src/constants';
-import { PageSnapshot } from 'src/typing/editor';
+import { PageBlockSnapshot } from 'src/typing/editor';
+import { TypedMap } from 'src/typing/yjs';
 import * as Y from 'yjs';
-import { TypedMap } from 'yjs-types';
 
 export function getPage(doc: Y.Doc) {
   // ts issue： https://github.com/yjs/yjs/issues/352
-  const page = doc.getMap(BlockType.Page) as TypedMap<PageSnapshot>;
+  const page = doc.getMap(BlockType.Page) as TypedMap<PageBlockSnapshot>;
 
   return page;
 }

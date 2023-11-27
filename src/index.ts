@@ -1,3 +1,3 @@
-import { runView } from './view';
+import { runView } from './view/index';
 
 runView();
